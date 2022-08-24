@@ -1,0 +1,1 @@
+kubectl top pods -A | awk -F" " '/^[0-9]+/ {cpu+=substr($3,1,length($3)-1); memory+=substr($4,1,length($4)-1); counter++; printf "%s %s %s %s\n", $3,cpu,$4,memory} END { print "Total CPU = " cpu"m"; print "Total Memory = " memory"Mi"; print "Total Number of Pods = " counter}'
